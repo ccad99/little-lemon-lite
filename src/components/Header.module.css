@@ -1,0 +1,198 @@
+/* Header.module.css */
+
+.header {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   background-color: #f5f5f5;
+   padding: 10px 15px;
+   height: 60px;
+   position: relative;
+   width: 100%;
+}
+
+/*  Ensures even spacing between elements */
+.header > * {
+   /* flex: 1;  This evenly distributes the items in the header */
+   text-align: center;
+   margin: 0 5%;
+}
+
+/*  Animated Hamburger Menu Button */
+.menuButton {
+   background: none;
+   border: none;
+   cursor: pointer;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   width: 40px;
+   height: 30px;
+   padding: 0;
+   position: relative;
+   z-index: 3;
+}
+
+/* Hamburger Bars */
+.bar {
+   display: block;
+   width: 40px;
+   height: 5px;
+   background-color: black;
+   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+   border-radius: 5px;
+   margin-bottom: 5px;
+}
+
+.bar:last-child {
+   margin-bottom: 0;
+}
+
+/* Hamburger Open State (transforms to X) */
+.menuButton.open .bar:nth-child(1) {
+   transform: translateY(10px) rotate(45deg);
+}
+
+.menuButton.open .bar:nth-child(2) {
+   opacity: 0;
+}
+
+.menuButton.open .bar:nth-child(3) {
+   transform: translateY(-10px) rotate(-45deg);
+}
+
+/*  Logo */
+.headerLogo {
+   width: 140px;
+   max-width: 150px;
+   /* height: auto; */
+}
+
+/*  Cart Icon */
+.icon {
+   width: 40px;
+   height: 40px;
+   cursor: pointer;
+}
+
+/*  Mobile Drop Down Menu (Hidden by Default) */
+.navMenu {
+   position: absolute;
+   top: 4rem;
+   left: 25%;
+   width: 40vw;
+   max-width: 300px;
+   /* background: rgba(123, 125, 123, 0.9); */
+   background: rgb(136, 136, 136, 0.9);
+   color: black;
+   display: none;
+   flex-direction: column;
+   text-align: center;
+   padding: 15px 0;
+   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+   z-index: 2;
+   transform: translateX(-50%);
+   border-radius: 8px;
+}
+
+/*  Open Mobile Menu */
+.navMenu.open {
+   display: flex;
+}
+
+/*  Mobile Menu Items */
+.navMenu ul {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+}
+
+.navMenu li {
+   padding: 10px 0;
+}
+
+/*  Desktop Navigation Bar */
+.desktopNav {
+   display: flex;
+   margin-left: auto;
+   min-width: 600px;
+}
+
+/*  */
+.desktopNav ul {
+   list-style: none;
+   display: flex;
+   flex-wrap: wrap;
+   gap: 20px;
+   row-gap: 5px;
+}
+
+.desktopNav li {
+   padding: 8px;
+}
+
+/* .navMenu a {
+   text-decoration: none;
+   color: white;
+   font-size: 18px;
+   transition: 0.3s ease;
+} */
+
+.navMenu a,
+.desktopNav a {
+   text-decoration: none;
+   font-size: 18px;
+   transition: 0.3s ease;
+}
+
+.navMenu a {
+   color: white;
+}
+
+.navMenu a:hover {
+   color: #f4ce14;
+}
+
+.desktopNav a {
+   color: black;
+}
+
+.desktopNav a:hover {
+   color: #f4ce14;
+}
+
+@media (min-width: 769px) {
+   .menuButton {
+      display: none; /*  Hide hamburger on desktop */
+   }
+}
+
+/*  Mobile View Adjustments */
+
+@media (max-width: 768px) {
+   .menuButton {
+      display: block;
+   }
+
+   .desktopNav {
+      display: none;
+   }
+
+   .navMenu {
+      padding: 20px 0;
+   }
+
+   .headerLogo {
+      width: 120px;
+   }
+
+   .navMenu li {
+      padding: 8px 0;
+   }
+}
+
+@media (max-width: 400px) {
+   .headerLogo {
+      width: 100px;
+   }
+}

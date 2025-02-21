@@ -1,0 +1,77 @@
+.menuContainer {
+   padding: 20px;
+   max-width: 800px;
+   margin: 0 auto;
+}
+
+/* Make the menu header sticky at the top */
+.menuHeader {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   /* padding: 12px; */
+   padding: 12px 20px;
+   border-bottom: 2px solid #333;
+   background-color: #f4f4f4;
+   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+   font-weight: bold;
+   text-transform: uppercase;
+   position: sticky;
+   top: 0;
+   z-index: 10;
+}
+
+/* ✅ Stack Name & Description in column */
+.nameDescription {
+   display: flex;
+   flex-direction: column;
+   /* flex: 8; */
+   flex-basis: 70%;
+}
+
+.menuHeader span {
+   flex: 1;
+   font-size: 1rem;
+}
+
+/* ✅ Make sure header text aligns properly */
+.name {
+   font-weight: bold;
+   text-align: center;
+}
+
+.description {
+   font-size: 0.9rem;
+   text-align: center;
+   color: #666;
+}
+
+/* Ensure headers align properly */
+
+.menuHeader .price {
+   text-align: center;
+   flex-basis: 25%;
+}
+
+.menuHeader .spicy {
+   text-align: center;
+   flex-basis: 20%;
+}
+
+.menuList {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+}
+
+/* 🌟 Responsive Design for Mobile */
+@media (max-width: 600px) {
+   .menuHeader {
+      display: none; /* Hide header on small screens */
+   }
+
+   .menuContainer {
+      max-width: 100%;
+      padding: 10px;
+   }
+}

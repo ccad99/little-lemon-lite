@@ -1,0 +1,124 @@
+/* ✅ Footer Container */
+.footer {
+   display: grid;
+   grid-template-columns: 1fr 3fr; /* Logo takes 1/4 width, content takes 3/4 */
+   gap: 30px;
+   background-color: #495e57;
+   color: white;
+   padding: 20px 20px;
+   align-items: start;
+}
+
+.footerLogo {
+   justify-self: center;
+   background-color: white;
+   margin: 1.2rem;
+}
+
+.footerLogo img {
+   width: 140px;
+   height: 200px; /* Twice as tall as it is wide */
+   object-fit: contain;
+}
+
+/* Right Side: 3 Columns */
+.footerColumns {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr); /* Three evenly spaced columns */
+   gap: 30px;
+}
+
+.footerColumn {
+   display: flex;
+   flex-direction: column;
+}
+
+/* Individual Columns */
+.footerColumn h3 {
+   font-size: 1.1rem;
+   margin-bottom: 0.3rem;
+   text-transform: uppercase;
+   color: #f4ce14;
+}
+
+.footerColumn ul {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+}
+
+.footerColumn ul li {
+   margin-bottom: 6px;
+}
+
+.footerColumn p {
+   margin: 0;
+   margin-bottom: 1rem;
+}
+
+.navLink {
+   padding: 0.3rem 0;
+}
+
+/* Social Media */
+
+.socialLinks {
+   display: flex;
+   flex-direction: column;
+   gap: 8px;
+}
+
+.socialLinks .icon {
+   font-size: 32px;
+   color: white;
+   transition: color 0.3s ease-in-out;
+   margin-left: 1.6em;
+}
+
+.socialLinks .icon:first-child {
+   margin-top: 10px;
+}
+
+.socialLinks .icon:hover {
+   color: #f4ce14;
+   transform: scale(1.1);
+}
+
+.footerColumn a {
+   text-decoration: none;
+   color: white;
+   font-size: 1rem;
+   transition: color 0.3s ease-in-out;
+}
+
+.footerColumn a:hover {
+   color: #f4ce14;
+}
+
+/* Mobile View (Stack Columns) */
+@media (max-width: 768px) {
+   .footer {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 5px;
+   }
+
+   .footerLogo img {
+      margin: 0 auto;
+   }
+
+   .footerColumns {
+      grid-template-columns: 1fr;
+      text-align: center;
+   }
+
+   .socialLinks .icon {
+      margin-left: 0.8em;
+   }
+}
+
+@media (min-width: 769px) {
+   .socialLinks {
+      justify-content: center;
+   }
+}
