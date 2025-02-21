@@ -1,55 +1,82 @@
 /* Hero.module.css */
 
+/* hero container */
 .heroContainer {
-   /* margin: 0 auto; */
+   display: flex;
+   align-items: flex-start;
+   justify-content: space-between;
+   background-color: #495e57;
+   color: white;
+   padding: 30px 5%;
+   height: auto;
+   flex-wrap: wrap;
+   position: relative;
 }
 
+/* hero text content */
 .hero {
    font-family: "Domine", serif;
-   font-optical-sizing: auto;
    font-weight: 300;
-   font-style: normal;
    display: flex;
-   border-radius: 5px;
-   background-color: #495e57;
-   flex-wrap: wrap;
+   flex-direction: column;
+   max-width: 50%;
+   flex: 1;
+   padding-top: 10px;
+   /* border-radius: 5px;
+   flex-wrap: wrap; */
 }
 
-.heroTitle {
+/* old hero Title */
+
+/* .heroTitle {
    display: flex;
    flex-direction: column;
    align-items: flex-end;
    min-width: 250px;
-}
+} */
 
-.heroTitleA {
-   font-weight: 500;
+/* hero Title */
+.heroName {
+   /* font-weight: 500;
    font-size: 50px;
    color: #f4ce14;
    margin-right: 12rem;
-   margin-bottom: 2px;
+   margin-bottom: 2px; */
+   font-size: clamp(30px, 5vw, 64px);
+   margin-bottom: 5px;
+   color: #f4ce14;
 }
 
-.heroTitleB {
-   font-weight: 200;
+/* hero City */
+.heroCity {
+   /* font-weight: 200;
    font-size: 32px;
    color: #edefee;
    margin-top: 0;
    margin-right: 23.5rem;
-   margin-bottom: 10px;
+   margin-bottom: 10px; */
+   font-size: clamp(20px, 3vw, 32px);
+   margin-top: 0;
+   margin-bottom: 5px;
+   color: #edefee;
 }
 
 .heroText {
-   display: flex;
+   /* display: flex;
    font-size: 20px;
    color: #ffffff;
    max-width: 80%;
-   width: 50%;
+   width: 50%; */
+   font-size: clamp(14px, 2vw, 20px);
+   margin-top: 10px;
+   line-height: 1.4;
+   max-width: 80%;
+   text-align: left;
 }
 
+/* Reserve a Table button */
 .heroButton {
-   /* align-self: center; */
-   padding: 12px 24px;
+   /* padding: 12px 24px;
    border-radius: 10px;
    border: 2px;
    margin: 5% 0;
@@ -62,26 +89,55 @@
    color: #333;
    cursor: pointer;
 
-   transition: 0.3s ease;
+   transition: 0.3s ease; */
+
+   background-color: #f4ce14;
+   color: black;
+   border: none;
+   padding: 12px 24px;
+   font-size: clamp(14px, 2vw, 20px);
+   font-weight: bold;
+   border-radius: 10px;
+   cursor: pointer;
+   margin-top: 15px;
+   max-width: 240px;
+   transition: all 0.3s ease-in-out;
+   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .heroButton:hover {
-   background-color: #fff200;
+   /* background-color: #fff200; */
+
+   background-color: #ffcc00;
+   transform: scale(1.02);
+   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .heroImage {
-   width: 65%; /*  Dynamically scales */
+   /* width: 65%; 
    max-width: 24em;
    margin-left: 95rem;
    margin-top: -22rem;
    max-height: 24em;
    border-radius: 20px;
    object-fit: cover;
-   flex-shrink: 0;
+   flex-shrink: 0; */
+
+   width: 35%;
+   max-width: 450px;
+   height: 60%;
+   max-height: 400px;
+   border-radius: 10px;
+   object-fit: cover;
+   position: relative;
+   margin-top: 20px;
+   margin-right: 40px;
+   margin-bottom: -60px;
 }
 
 /* 🌟 Responsive Design for Mobile */
-@media (max-width: 768px) {
+
+/* @media (max-width: 768px) {
    .hero {
       flex-direction: column;
       align-items: center;
@@ -103,5 +159,86 @@
    .heroImage {
       width: 80%;
       max-width: 250px;
+   }
+} */
+
+/* Responsive Design for Mobile */
+
+@media (max-width: 768px) {
+   .heroContainer {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 40px 5%;
+   }
+
+   .hero {
+      max-width: 100%;
+      align-items: center;
+   }
+
+   .heroText {
+      max-width: 90%;
+      text-align: center;
+   }
+
+   .heroImage {
+      width: 90%;
+      max-width: 350px;
+      margin-top: 20px;
+      margin-right: 0;
+      height: auto;
+   }
+}
+
+@media (max-width: 500px) {
+   .heroName {
+      font-size: 28px;
+   }
+
+   .heroCity {
+      font-size: 22px;
+   }
+
+   .heroText {
+      font-size: 16px;
+   }
+
+   .heroButton {
+      padding: 8px 18px;
+      font-size: 15px;
+   }
+
+   .heroImage {
+      width: 100%;
+      max-width: 350px;
+      margin-bottom: -10px;
+   }
+}
+
+@media (max-width: 400px) {
+   .heroImage {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 5px;
+   }
+}
+
+@media (max-width: 320px) {
+   .heroName {
+      font-size: 22px;
+   }
+
+   .heroCity {
+      font-size: 18px;
+   }
+
+   .heroText {
+      font-size: 14px;
+   }
+
+   .heroButton {
+      padding: 8px 16px;
+      font-size: 14px;
    }
 }
