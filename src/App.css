@@ -4,6 +4,10 @@
    padding: 0;
 }
 
+html {
+   scroll-behavior: smooth;
+}
+
 :root {
    --Font-Primary: "Markazi Text", serif;
    --Font-Secondary: "Karla", sans-serif;
@@ -19,8 +23,51 @@
    --Hero-Back: linear-gradient(0deg, #fff 13%, #495e57 0);
 }
 
-/* Apply styles */
+/* 🖼 Standard Section Container (used in all sections) */
+.container {
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 2rem 5%;
+}
 
+/* 🏷️ Standard Headings */
+h1 {
+   font-family: var(--Font-Primary);
+   color: var(--Color-Primary-Light);
+}
+
+h1 {
+   font-size: clamp(2rem, 5vw, 5rem);
+}
+
+h2 {
+   font-family: var(--Font-Secondary);
+   font-size: clamp(1.5rem, 4vw, 3rem);
+}
+
+p {
+   font-family: var(--Font-Secondary);
+   font-size: clamp(1rem, 2vw, 1.8rem);
+   color: var(--Color-Highlight-Light);
+   line-height: 1.5;
+   word-wrap: break-word;
+   overflow-wrap: break-word;
+}
+
+/* 🌟 Apply Global Responsive Padding */
+/* @media (max-width: 900px) {
+   .container {
+      padding: 2rem 3%;
+   }
+}
+
+@media (max-width: 600px) {
+   .container {
+      padding: 2rem;
+   }
+} */
+
+/* Body Styling */
 body {
    font-family: var(--Font-Secondary);
    color: var(--Color-Highlight);
@@ -28,4 +75,26 @@ body {
    margin: 0;
    padding: 0;
    line-height: 1.5;
+}
+
+img {
+   max-width: 100%;
+   height: auto;
+   display: block;
+}
+
+button {
+   font-family: var(--Font-Secondary);
+   font-weight: bold;
+   font-size: 20px;
+   cursor: pointer;
+   transition: all 0.3s ease-in-out;
+   padding: 1rem 2rem;
+   border-radius: 10px;
+   background-color: var(--Color-Primary-Light);
+   color: var(--Color-Highlight);
+}
+
+button:hover {
+   opacity: 0.9;
 }
