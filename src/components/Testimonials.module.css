@@ -8,9 +8,10 @@
 
 .heading {
    display: flex;
+   font-family: var(--Font-Primary);
    font-size: 3rem;
    justify-content: center;
-   color: #f4ce14;
+   color: var(--Color-Primary-Light);
    margin-bottom: 3.2rem;
    margin-top: 1rem;
 }
@@ -25,9 +26,9 @@
 .testimonial {
    display: flex;
    align-items: center;
-   width: 16rem;
+   width: 20rem;
    margin-left: 8rem;
-   background-color: #f4f4f4;
+   background-color: var(--Color-Highlight-Light);
    padding: 1.4rem;
    border-radius: 10px;
    text-align: left;
@@ -49,21 +50,24 @@
 }
 
 .text h3 {
-   font-size: 1.2rem;
-   color: #333;
+   font-family: var(--Font-Primary);
+   font-size: 1.3rem;
+   color: var(--Color-Highlight);
    margin-bottom: 5px;
 }
 
 .text p {
-   font-size: 1rem;
-   color: #555;
+   font-family: var(--Font-Secondary);
+   font-size: 1.1rem;
+   color: var(--Color-Highlight);
    margin-bottom: 5px;
 }
 
 .name {
+   font-family: var(--Font-Secondary);
    font-style: italic;
-   color: #777;
-   font-size: 0.9rem;
+   color: var(--Color-Highlight);
+   font-size: 1rem;
 }
 
 .rating {
@@ -73,8 +77,8 @@
 }
 
 .star {
-   color: gold;
-   font-size: 1.2rem;
+   color: var(--Color-Primary-Light);
+   font-size: 1.3rem;
 }
 
 @media (max-width: 768px) {

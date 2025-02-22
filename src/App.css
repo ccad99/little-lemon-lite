@@ -1,0 +1,31 @@
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+:root {
+   --Font-Primary: "Markazi Text", serif;
+   --Font-Secondary: "Karla", sans-serif;
+
+   --Color-Primary: #495e57;
+   --Color-Primary-Light: #f4ce14;
+   --Color-Secondary: #ee9972;
+   --Color-Secondary-Light: #fbdabb;
+   --Color-Highlight: #333;
+   --Color-Highlight-Light: #edefee;
+   --Color-Card-Background: #e5e8e3;
+
+   --Hero-Back: linear-gradient(0deg, #fff 13%, #495e57 0);
+}
+
+/* Apply styles */
+
+body {
+   font-family: var(--Font-Secondary);
+   color: var(--Color-Highlight);
+   background-color: var(--Color-Highlight-Light);
+   margin: 0;
+   padding: 0;
+   line-height: 1.5;
+}

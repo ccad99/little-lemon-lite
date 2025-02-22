@@ -4,6 +4,7 @@ import AppLayout from "./ui/AppLayout";
 import HomePage from "./pages/HomePage";
 import ReservationPage from "./pages/ReservationPage";
 import PageNotFound from "./ui/PageNotFound";
+import "./App.css";
 
 const queryClient = new QueryClient();
 
