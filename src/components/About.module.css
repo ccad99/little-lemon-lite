@@ -2,32 +2,32 @@
    display: grid;
    grid-template-columns: 1fr 1fr;
    gap: 20px;
-   max-width: 80%;
+   max-width: 85%;
    margin: 0 auto;
    align-items: center;
-   padding: 20px 0;
+   padding: 40px 0;
    margin-bottom: 6em;
 }
 
 .textColumn {
    display: flex;
    flex-direction: column;
+   justify-content: center;
    align-self: start;
-   margin-left: 6rem;
+   margin-left: 4rem;
 }
 
 .title {
    font-family: var(--Font-Primary);
-   font-size: 3rem;
+   font-size: clamp(2.5rem, 5vw, 3.5rem);
    font-weight: bold;
    color: var(--Color-Highlight);
-   margin-top: 0.4rem;
    margin-bottom: 0;
 }
 
 .subtitle {
    font-family: var(--Font-Secondary);
-   font-size: 1.5rem;
+   font-size: clamp(1.5rem, 3vw, 2rem);
    font-weight: bold;
    color: var(--Color-Highlight);
    margin-top: 0;
@@ -43,57 +43,171 @@
    line-height: 1.6;
    margin-top: 0;
    color: var(--Color-Primary);
-   width: 60%;
+   width: 70%;
 }
 
 .imageColumn {
    position: relative;
    display: flex;
-   justify-content: center;
-   margin-top: 3em;
-   margin-bottom: 5em;
+   justify-content: flex-start;
+   align-items: flex-start;
+   margin-top: 5em;
+   margin-bottom: 1em;
 }
 
 .imageContainer {
    position: relative;
    width: 100%;
-   max-width: 400px;
-   margin-right: 16rem;
+   max-width: 600px;
+   height: auto;
+   margin-top: 3rem;
 }
 
 .imageA {
    width: 100%;
    height: auto;
    border-radius: 10px;
-   position: absolute;
-   padding-top: 6rem;
+   position: relative;
+   z-index: 1;
 }
 
 .imageB {
-   width: 80%;
+   width: 65%;
    height: auto;
-   position: relative;
-   top: -1rem;
-   left: 20rem;
+   position: absolute;
+   top: -6rem;
+   left: 85%;
+   transform: translateX(-50%);
    border-radius: 10px;
    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+   z-index: 2;
 }
 
-@media (max-width: 768px) {
+/* Responsiveness */
+
+@media (max-width: 1440px) {
+   .about {
+      max-width: 90%;
+   }
+
+   .imageContainer {
+      max-width: 550px;
+   }
+
+   .imageB {
+      width: 60%;
+      top: -5rem;
+      left: 80%;
+   }
+
+   .description {
+      max-width: 80%;
+   }
+}
+
+@media (max-width: 1024px) {
    .about {
       grid-template-columns: 1fr;
       text-align: center;
    }
 
+   .textColumn {
+      margin-left: 0;
+      align-items: center;
+   }
+
+   .description {
+      max-width: 90%;
+   }
+
    .imageColumn {
-      display: flex;
       justify-content: center;
-      margin-top: 1em;
+      margin-top: 2rem;
+   }
+
+   .imageContainer {
+      max-width: 450px;
+   }
+
+   .imageB {
+      width: 55%;
+      top: -4rem;
+      left: 75%;
+   }
+}
+
+@media (max-width: 768px) {
+   .about {
+      text-align: center;
+      padding: 3rem 5%;
+   }
+
+   .textColumn {
+      max-width: 90%;
+      align-items: center;
+   }
+
+   .imageContainer {
+      max-width: 380px;
+   }
+
+   .imageB {
+      width: 50%;
+      top: -3rem;
+      left: 70%;
+   }
+}
+
+/* Small Mobile (500px & below) */
+@media (max-width: 500px) {
+   .about {
+      padding: 2rem;
+   }
+
+   .title {
+      font-size: 2.2rem;
+   }
+
+   .subtitle {
+      font-size: 1.5rem;
+   }
+
+   .description {
+      font-size: 1.2rem;
+   }
+
+   .imageContainer {
+      max-width: 320px;
    }
 
    .imageB {
       width: 50%;
       top: -2rem;
-      right: 3rem;
+      left: 65%;
+   }
+}
+
+/* Extra Small Mobile (320px & below) */
+@media (max-width: 320px) {
+   .title {
+      font-size: 2rem;
+   }
+
+   .subtitle {
+      font-size: 1.3rem;
+   }
+
+   .description {
+      font-size: 1rem;
+   }
+
+   .imageContainer {
+      max-width: 280px;
+   }
+
+   .imageB {
+      width: 45%;
+      top: -1rem;
+      left: 60%;
    }
 }

@@ -1,7 +1,63 @@
 // Table reservation page
 
+import { useState } from "react";
+import ReservationForm from "../components/ReservationForm";
+import ReservationReviewForm from "../components/ReservationReviewForm";
+import ReservationPaymentForm from "../components/ReservationPaymentForm";
+import ReservationProgressBar from "../components/ReservationProgressBar";
+
 function ReservationPage() {
-   return <div>This is the Reservation page</div>;
+   const [step, setStep] = useState(1);
+
+   const [formData, setFormData] = useState({
+      name: "",
+      date: "",
+      time: "",
+      guests: "1",
+      occasion: "",
+      phone: "",
+      email: "",
+   });
+
+   const nextStep = () => setStep(step + 1);
+   const prevStep = () => setStep(step - 1);
+
+   const resetForm = () => {
+      setFormData({
+         name: "",
+         date: "",
+         time: "",
+         guests: "1",
+         occasion: "",
+         phone: "",
+         email: "",
+      });
+      setStep(1);
+   };
+
+   return (
+      <div>
+         <ReservationProgressBar step={step} />
+         {step === 1 && (
+            <ReservationForm
+               formData={formData}
+               setFormData={setFormData}
+               nextStep={nextStep}
+               resetForm={resetForm}
+            />
+         )}
+         {step === 2 && (
+            <ReservationReviewForm
+               formData={formData}
+               prevStep={prevStep}
+               nextStep={nextStep}
+            />
+         )}
+         {step === 3 && (
+            <ReservationPaymentForm formData={formData} prevStep={prevStep} />
+         )}
+      </div>
+   );
 }
 
 export default ReservationPage;

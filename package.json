@@ -13,10 +13,12 @@
     "@supabase/supabase-js": "^2.48.1",
     "@tanstack/react-query": "^5.66.8",
     "@tanstack/react-query-devtools": "^5.66.8",
+    "formik": "^2.4.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.5.0",
-    "react-router-dom": "^6.29.0"
+    "react-router-dom": "^6.29.0",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

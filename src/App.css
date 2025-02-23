@@ -55,7 +55,8 @@ p {
 }
 
 /* 🌟 Apply Global Responsive Padding */
-/* @media (max-width: 900px) {
+
+@media (max-width: 900px) {
    .container {
       padding: 2rem 3%;
    }
@@ -65,7 +66,7 @@ p {
    .container {
       padding: 2rem;
    }
-} */
+}
 
 /* Body Styling */
 body {

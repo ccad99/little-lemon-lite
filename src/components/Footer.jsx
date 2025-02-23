@@ -12,7 +12,7 @@ function Footer() {
          </div>
          <div className={styles.footerColumns}>
             <div className={styles.footerColumn}>
-               <h3>Doormat Navigation</h3>
+               <h3>Navigation</h3>
                <ul>
                   <li className={styles.navLink}>
                      <Link to="/" aria-label="Go to Home Page">
