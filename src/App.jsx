@@ -4,6 +4,7 @@ import AppLayout from "./ui/AppLayout";
 import HomePage from "./pages/HomePage";
 import ReservationPage from "./pages/ReservationPage";
 import PageNotFound from "./ui/PageNotFound";
+import { Toaster, ToastBar, toast } from "react-hot-toast";
 import "./App.css";
 
 const queryClient = new QueryClient();
@@ -11,6 +12,24 @@ const queryClient = new QueryClient();
 function App() {
    return (
       <QueryClientProvider client={queryClient}>
+         {/* <Toaster position="top-center" /> */}
+         <Toaster position="top-center">
+            {(t) => (
+               <ToastBar toast={t}>
+                  {({ icon, message }) => (
+                     <>
+                        {icon}
+                        {message}
+                        {t.type !== "loading" && (
+                           <button onClick={() => toast.dismiss(t.id)}>
+                              X
+                           </button>
+                        )}
+                     </>
+                  )}
+               </ToastBar>
+            )}
+         </Toaster>
          <BrowserRouter>
             <Routes>
                <Route element={<AppLayout />}>

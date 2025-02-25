@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 // import CartIcon from "../assets/icons/icon-basket.svg";
 import Logo from "../assets/images/littleLemon/logo-small.svg";
 import styles from "./Header.module.css";
@@ -10,6 +10,18 @@ function Header() {
    const toggleMenu = () => {
       setMenuOpen(!menuOpen);
    };
+
+   /* Navigation to About & Testimonials */
+   const location = useLocation();
+
+   useEffect(() => {
+      if (location.hash) {
+         const element = document.getElementById(location.hash.substring(1));
+         if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+         }
+      }
+   }, [location]);
 
    /* Auto close hamburger menu when screen size increases */
    useEffect(() => {
@@ -59,7 +71,8 @@ function Header() {
                   </Link>
                </li>
                <li>
-                  <Link to="/about" onClick={() => setMenuOpen(false)}>
+                  {/* <Link to="/about" onClick={() => setMenuOpen(false)}> */}
+                  <Link to="/#about" onClick={() => setMenuOpen(false)}>
                      About
                   </Link>
                </li>
@@ -74,7 +87,8 @@ function Header() {
                   </Link>
                </li>
                <li>
-                  <Link to="/testimonials" onClick={() => setMenuOpen(false)}>
+                  {/* <Link to="/testimonials" onClick={() => setMenuOpen(false)}> */}
+                  <Link to="/#testimonials" onClick={() => setMenuOpen(false)}>
                      Testimonials
                   </Link>
                </li>
@@ -98,22 +112,24 @@ function Header() {
                   <Link to="/">Home</Link>
                </li>
                <li>
-                  <Link to="/about">About</Link>
+                  {/* <Link to="/about">About</Link> */}
+                  <Link to="/#about">About</Link>
                </li>
                <li>
-                  <Link to="">Menu</Link>
+                  <Link to="/">Menu</Link>
                </li>
                <li>
                   <Link to="/reservations">Reservations</Link>
                </li>
                <li>
-                  <Link to="/testimonials">Testimonials</Link>
+                  {/* <Link to="/testimonials">Testimonials</Link> */}
+                  <Link to="/#testimonials">Testimonials</Link>
                </li>
                <li>
-                  <Link to="">Order Online</Link>
+                  <Link to="/">Order Online</Link>
                </li>
                <li>
-                  <Link to="">Login</Link>
+                  <Link to="/">Login</Link>
                </li>
             </ul>
          </nav>

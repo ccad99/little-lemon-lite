@@ -1,0 +1,299 @@
+.paymentPage {
+   /* margin-bottom: 15rem; */
+}
+
+/* .paymentPage h2 {
+   color: var(--Color-Primary);
+   margin-bottom: 20px;
+   padding: 0;
+   text-decoration: underline;
+} */
+
+.paymentForm {
+   display: block;
+   padding: 2rem;
+   border-radius: 10px;
+   /* width: 50%; */
+   max-width: 1440px;
+   margin: 3rem auto;
+   background-color: lightgrey;
+   /* font-size: large; */
+}
+
+.paymentForm h2 {
+   font-family: var(--Font-Primary);
+   color: var(--Color-Primary);
+   margin-bottom: 20px;
+   padding: 0;
+   text-decoration: underline;
+   text-align: center;
+}
+
+.disclaimer {
+   color: var(--Color-Highlight);
+   font-size: 20px;
+   font-style: italic;
+   padding: 0 30px;
+   margin-bottom: 20px;
+}
+
+.reservation {
+   padding: 20px;
+   color: var(--Color-Primary);
+   text-align: center;
+}
+
+.sectionHeader {
+   font-family: var(--Font-Secondary);
+   text-align: center;
+   font-size: x-large;
+   margin-top: 20px;
+}
+
+.paymentGrid {
+   margin: 0;
+   padding: 0;
+   display: grid;
+   grid-template-columns: repeat(3 1fr);
+}
+
+.formField {
+   max-width: 400px;
+   grid-column: 2;
+   padding: 0;
+}
+
+.cvvContainer {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+}
+
+.radioGroup {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   width: 100%;
+   gap: 10px;
+   margin-top: 10px;
+}
+
+.radioGroup label {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   font-size: 1rem;
+   cursor: pointer;
+}
+
+.radioButtons {
+   display: grid(repeat(3, 1fr));
+}
+
+.radioGroup input[type="radio"] {
+   margin: 0;
+   width: 18px; /* Ensure the radio button is clearly visible */
+   height: 18px;
+}
+
+.cvvImage {
+   align-items: end;
+}
+
+/* .body {
+   display: flex;
+   justify-content: space-between;
+   border-radius: 20px;
+   padding: 2em;
+   background-color: var(--Color-Primary);
+   color: white;
+} */
+
+/* 
+.leftColumn {
+   display: flex;
+   flex-direction: column;
+   padding-right: 30px;
+}
+
+.rightColumn {
+   display: flex;
+   flex-direction: column;
+   padding-right: 30px;
+} */
+
+.error {
+   color: red;
+   font-size: 0.9rem;
+}
+
+.buttonContainer {
+   display: flex;
+   justify-content: flex-end;
+   margin-top: 20px;
+   gap: 1em;
+}
+
+.buttonContainer button {
+   padding: 10px 15px; /* Adjusted padding */
+   font-size: 1rem;
+   border-radius: 5px;
+   cursor: pointer;
+   font-weight: bold;
+   min-width: 140px; /* Ensures consistent width */
+}
+
+button {
+   padding: 10px 20px;
+   font-size: 1rem;
+   border-radius: 5px;
+   cursor: pointer;
+   font-weight: bold;
+}
+
+.prevButton button {
+   background-color: #ccc;
+   color: var(--Color-Primary);
+   border: 2px solid var(--Color-Primary);
+}
+
+.continueButton button {
+   background-color: var(--Color-Primary);
+   color: white;
+}
+
+.prevButton button:hover,
+.continueButton button:hover {
+   opacity: 0.8;
+}
+
+/* Main Payment Form Container */
+.paymentForm {
+   max-width: 1440px;
+   width: 50%;
+   margin: 3rem auto;
+   background-color: lightgrey;
+   padding: 2rem;
+   border-radius: 10px;
+}
+
+/* Adjust the Grid Layout */
+.paymentGrid {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 15px;
+}
+
+/* Centering the Radio Buttons */
+.radioGroup {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   text-align: center;
+   width: 100%;
+   gap: 10px;
+}
+
+.radioButtons {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 100%;
+}
+
+.radioGroup label {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   font-size: 1rem;
+   cursor: pointer;
+   width: 100%;
+   max-width: 300px; /* Limits radio button width */
+}
+
+/* Ensure the CVV Image Stays Next to Input */
+.cvvContainer {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   justify-content: flex-start;
+}
+
+.cvvImage {
+   width: 40px; /* Ensures proper size */
+   height: auto;
+}
+
+/* Buttons */
+.buttonContainer {
+   display: flex;
+   justify-content: flex-end;
+   margin-top: 20px;
+   gap: 1em;
+}
+
+.buttonContainer button {
+   padding: 10px 15px;
+   font-size: 1rem;
+   border-radius: 5px;
+   cursor: pointer;
+   font-weight: bold;
+   min-width: 140px;
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 1020px) {
+   .paymentForm {
+      width: 70%;
+      padding: 1.5rem;
+   }
+
+   .paymentGrid {
+      /* grid-template-columns: repeat(2, 1fr); */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+   }
+
+   .buttonContainer {
+      flex-direction: column;
+      align-items: center;
+   }
+}
+
+@media (max-width: 768px) {
+   .paymentForm {
+      width: 90%;
+      padding: 1.2rem;
+   }
+
+   .paymentGrid {
+      /* grid-template-columns: 1fr; */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+   }
+
+   .radioGroup {
+      width: 100%;
+   }
+
+   .radioGroup label {
+      max-width: 100%;
+      justify-content: center;
+   }
+
+   .buttonContainer {
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .buttonContainer button {
+      width: 100%;
+      max-width: 250px;
+   }
+}

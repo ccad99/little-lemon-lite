@@ -1,5 +1,4 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
-
 import styles from "./ReservationForm.module.css";
 import * as Yup from "yup";
 
@@ -10,12 +9,10 @@ const validationSchema = Yup.object({
    guests: Yup.number().min(1).max(10).required("No. of Guests is required"),
    occasion: Yup.string(),
    phone: Yup.string().required("Phone is required"),
-   email: Yup.string()
-      .email("Invalid Email")
-      .required("Email name is required"),
+   email: Yup.string().email("Invalid Email").required("Email is required"),
 });
 
-function ReservationForm({ formData, setFormData, nextStep, resetForm }) {
+function ReservationForm({ formData, setFormData, step, nextStep, resetForm }) {
    return (
       <Formik
          initialValues={formData}
@@ -33,7 +30,7 @@ function ReservationForm({ formData, setFormData, nextStep, resetForm }) {
                   </div>
 
                   <div className={styles.nameCell}>
-                     <label>Your Name</label>
+                     <label>Name</label>
                      <Field type="text" name="name" placeholder="Full Name" />
                      <ErrorMessage
                         name="name"
@@ -124,13 +121,20 @@ function ReservationForm({ formData, setFormData, nextStep, resetForm }) {
                      />
                   </div>
 
-                  <div className={styles.resetCell}>
-                     <button type="button" onClick={resetForm}>
+                  <div className={styles.buttonContainer}>
+                     <button
+                        type="button"
+                        className={styles.resetButton}
+                        onClick={resetForm}
+                     >
                         Reset
                      </button>
-                  </div>
-                  <div className={styles.continueCell}>
-                     <button type="submit" disabled={isSubmitting}>
+
+                     <button
+                        type="submit"
+                        className={styles.continueButton}
+                        disabled={isSubmitting}
+                     >
                         Continue
                      </button>
                   </div>

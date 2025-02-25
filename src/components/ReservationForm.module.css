@@ -3,21 +3,12 @@
    padding: 2rem;
    border-radius: 10px;
    width: 50%;
-
-   /* Commented out due to Wrapper conflict */
-   /* margin: 0 auto; */
-
-   /* Wrapper Code */
    max-width: 1440px;
    margin: 2rem auto;
+   margin-bottom: 50px;
 }
 
 .reservationForm > div {
-   border: 2px solid rgb(233 171 88);
-   border-radius: 5px;
-   background-color: rgb(233 171 88 / 50%);
-   padding: 1em;
-   /* color: #d9480f; */
    color: var(--Color-Highlight);
 }
 
@@ -26,82 +17,34 @@
    grid-template-columns: repeat(11, 1fr);
    gap: 1em;
    grid-auto-rows: minmax(80px, auto);
-   padding: 15px;
+   padding: 1.5em;
    background-color: lightgrey;
-   font-size: x-large;
+   font-size: large;
 }
-
-/* .row {
-   display: flex;
-   gap: 20px;
-   margin-bottom: 1rem;
-} */
-
-/* .row div {
-   flex: 1;
-} */
 
 .error {
    color: red;
    font-size: 0.9rem;
 }
 
-/* .buttonGroup {
-   max-width: 1440px;
-   margin: 2rem 2rem;
-   display: flex;
-   justify-content: flex-center;
-   gap: 2em;
-} */
-
-button {
-   width: 165px;
-   padding: 10px 20px;
-   border-radius: 5px;
-   cursor: pointer;
-   font-size: 1rem;
-}
-
-button[type="submit"] {
-   background-color: var(--Color-Primary);
-   color: white;
-}
-
-button[type="button"] {
-   background-color: #ccc;
-   color: var(--Color-Primary);
-   border: 3px solid var(--Color-Primary);
-}
-
 input,
-label {
+label,
+select {
    display: block;
+   width: 100%;
+   padding: 12px;
+   font-size: 1.2rem;
+   border-radius: 5px;
 }
 
-.wrapper {
-   max-width: 1440px;
-   margin: 2rem auto;
-}
-.wrapper > div {
-   border: 2px solid rgb(233 171 88);
-   border-radius: 5px;
-   background-color: rgb(233 171 88 / 50%);
-   padding: 1em;
-   /* color: #d9480f; */
-}
-.wrapper {
-   display: grid;
-   grid-template-columns: repeat(11, 1fr);
-   gap: 1em;
-   grid-auto-rows: minmax(80px, auto);
-   padding: 15px;
-   background-color: lightgrey;
-}
 .titleCell {
-   grid-column: 1 / 6;
+   grid-column: 1 / 12;
    grid-row: 1;
-   margin-bottom: 10px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
    text-decoration: underline;
+   color: var(--Color-Primary);
 }
 .nameCell {
    grid-column: 1 / 8;
@@ -134,18 +77,99 @@ label {
    grid-row: 5;
 }
 
-.resetCell {
-   grid-column: 7 / 10;
+.buttonContainer {
+   display: flex;
+   justify-content: flex-end;
+   align-items: flex-end;
+   margin-top: 20px;
+   gap: 1em;
    grid-row: 6;
-   margin: 0 0 0 20px;
+   grid-column: 8 / 12;
+}
+
+.buttonContainer button {
+   padding: 10px 15px;
+   font-size: 1rem;
+   border-radius: 5px;
+   cursor: pointer;
+   font-weight: bold;
+   min-width: 140px;
+}
+
+button {
+   padding: 10px 20px;
+   font-size: 1rem;
+   border-radius: 5px;
+   cursor: pointer;
+   font-weight: bold;
+}
+
+.resetButton button {
+   grid-column: 8 / 11;
+   margin: 0 1em;
+   display: flex;
+   justify-content: center;
+}
+
+.continueButton button {
+   grid-column: 10 / 12;
+   margin: 0 2rem 0 2rem;
    display: flex;
    justify-content: flex-end;
 }
 
-.continueCell {
-   grid-column: 10 / 12;
-   grid-row: 6;
-   margin: 0 2rem 0 2rem;
-   display: flex;
-   justify-content: flex-end;
+button[type="submit"] {
+   background-color: var(--Color-Primary);
+   color: white;
+}
+
+button[type="button"] {
+   background-color: #ccc;
+   color: var(--Color-Primary);
+   border: 3px solid var(--Color-Primary);
+}
+
+@media (max-width: 1024px) {
+   .reservationForm {
+      display: flex;
+      flex-direction: column;
+      width: 70%;
+   }
+
+   .nameCell,
+   .dateCell,
+   .timeCell,
+   .guestsCell,
+   .occasionCell,
+   .phoneCell,
+   .emailCell {
+      width: 100%;
+   }
+
+   .resetButton,
+   .continueButton {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0;
+   }
+}
+
+@media (max-width: 768px) {
+   .reservationForm {
+      width: 100%;
+   }
+
+   .titleCell {
+      font-size: 1.8rem;
+   }
+
+   input,
+   select {
+      font-size: 1.1rem;
+      padding: 12px;
+   }
+
+   button {
+      width: 100%;
+   }
 }

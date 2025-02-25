@@ -1,0 +1,140 @@
+.reviewPage {
+   margin-bottom: 2rem;
+}
+
+.reviewPage h2 {
+   color: var(--Color-Primary);
+   margin-bottom: 20px;
+   padding: 0;
+   text-decoration: underline;
+   text-align: center;
+}
+
+.reviewForm {
+   display: block;
+   padding: 2em;
+   border-radius: 10px;
+   width: 90%;
+   max-width: 900px;
+   margin: 3rem auto;
+   background-color: lightgrey;
+   font-size: large;
+}
+
+.reviewForm li {
+   list-style: none;
+   margin: 10px 0;
+   font-size: large;
+}
+
+.body {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   border-radius: 20px;
+   padding: 2em;
+   background-color: var(--Color-Primary);
+   color: white;
+   gap: 40px;
+}
+
+.imageColumn {
+   display: flex;
+   justify-content: center;
+   flex: 1;
+}
+
+.imageColumn img {
+   border-radius: 10px;
+   max-width: 100%;
+   height: auto;
+}
+
+.textColumn {
+   flex: 2;
+   display: flex;
+   flex-direction: column;
+   padding-right: 10px;
+}
+
+.buttonContainer {
+   display: flex;
+   justify-content: flex-end;
+   margin-top: 20px;
+   gap: 1em;
+}
+
+button {
+   padding: 10px 20px;
+   font-size: 1rem;
+   border-radius: 5px;
+   cursor: pointer;
+   font-weight: bold;
+}
+
+.prevButton button {
+   background-color: #ccc;
+   color: var(--Color-Primary);
+   border: 2px solid var(--Color-Primary);
+}
+
+.continueButton button {
+   background-color: var(--Color-Primary);
+   color: white;
+}
+
+.prevButton:hover,
+.continueButton:hover {
+   opacity: 0.8;
+}
+
+/* 🔹 Make layout responsive for smaller screens */
+@media (max-width: 768px) {
+   .body {
+      flex-direction: column; /* Stack image & text */
+      text-align: center;
+      gap: 20px;
+   }
+
+   .imageColumn {
+      width: 100%;
+   }
+
+   .imageColumn img {
+      max-width: 80%;
+      margin: 0 auto;
+   }
+
+   .textColumn {
+      padding: 0;
+   }
+
+   .buttonContainer {
+      flex-direction: column;
+      align-items: center;
+   }
+}
+
+@media (max-width: 500px) {
+   .reviewForm {
+      width: 95%;
+      padding: 1.5em;
+   }
+
+   .body {
+      padding: 1em;
+   }
+
+   .imageColumn img {
+      max-width: 90%;
+   }
+
+   .buttonContainer {
+      flex-direction: column;
+      width: 100%;
+   }
+
+   button {
+      width: 80%;
+   }
+}

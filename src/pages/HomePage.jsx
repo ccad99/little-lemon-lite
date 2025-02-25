@@ -12,10 +12,10 @@ function HomePage() {
          <section>
             <Carousel />
          </section>
-         <section>
+         <section id="testimonials">
             <Testimonials />
          </section>
-         <section>
+         <section id="about">
             <About />
          </section>
       </div>

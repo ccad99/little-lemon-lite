@@ -20,30 +20,31 @@ function Footer() {
                      </Link>
                   </li>
                   <li className={styles.navLink}>
-                     <Link to="/about" aria-label="Go to About Us Page">
+                     {/* <Link to="/about" aria-label="Go to About Us Page"> */}
+                     <Link to="/#about" aria-label="Go to About Us Page">
                         About Us
                      </Link>
                   </li>
                   <li className={styles.navLink}>
-                     <Link to="" aria-label="Go to Menu Page">
+                     <Link to="/" aria-label="Go to Menu Page">
                         Menu
                      </Link>
                   </li>
                   <li className={styles.navLink}>
                      <Link
-                        to="/reservation"
+                        to="/reservations"
                         aria-label="Go to Reservations Page"
                      >
                         Reservations
                      </Link>
                   </li>
                   <li>
-                     <Link to="" aria-label="Order Food Online">
+                     <Link to="/" aria-label="Order Food Online">
                         Order Online
                      </Link>
                   </li>
                   <li className={styles.navLink}>
-                     <Link to="" aria-label="Login to your account">
+                     <Link to="/" aria-label="Login to your account">
                         Login
                      </Link>
                   </li>
