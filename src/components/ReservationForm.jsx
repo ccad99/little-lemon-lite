@@ -106,7 +106,10 @@ function ReservationForm({ formData, setFormData, nextStep, resetForm }) {
          initialValues={{ ...formData }}
          validationSchema={validationSchema}
          onSubmit={(values) => {
-            setFormData(values);
+            setFormData((prev) => ({
+               ...prev, // ✅ Preserve existing data
+               ...values, // ✅ Merge new form values
+            }));
             nextStep();
          }}
       >

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 // import CartIcon from "../assets/icons/icon-basket.svg";
-import Logo from "../assets/images/littleLemon/logo-small.svg";
 import styles from "./Header.module.css";
 
 function Header() {
@@ -54,7 +53,7 @@ function Header() {
          <Link to="/">
             <img
                className={styles.headerLogo}
-               src={Logo}
+               src="/assets/images/littleLemon/logo-small.svg"
                alt="Little Lemon logo"
             />
          </Link>
@@ -116,7 +115,7 @@ function Header() {
                   <Link to="/#about">About</Link>
                </li>
                <li>
-                  <Link to="/">Menu</Link>
+                  <Link to="/menu">Menu</Link>
                </li>
                <li>
                   <Link to="/reservations">Reservations</Link>

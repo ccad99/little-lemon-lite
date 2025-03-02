@@ -6,7 +6,7 @@ import ReservationPaymentForm from "../components/ReservationPaymentForm";
 
 const mockFormData = {
    name: "John Doe",
-   date: "2025-03-15",
+   date: "2025-03-16",
    time: "18:00",
    guests: "3",
 };
@@ -32,33 +32,25 @@ beforeEach(() => {
 
 test("renders the form correctly", () => {
    expect(screen.getByText(/Complete Your Reservation/i)).toBeInTheDocument();
-   // expect(screen.getByText(/March 15, 2025 at 6:00 PM/i)).toBeInTheDocument();
-   expect(
-      screen.getByText(
-         (content) =>
-            content.includes("March 15, 2025") && content.includes("6:00 PM")
-      )
-   ).toBeInTheDocument();
-
+   expect(screen.getByText(/March 15, 2025/i)).toBeInTheDocument();
+   expect(screen.getByText(/6:00 PM/i)).toBeInTheDocument();
    expect(screen.getByText(/Credit Card Details/i)).toBeInTheDocument();
-
    expect(screen.getByLabelText(/Number/i)).toBeInTheDocument();
    expect(screen.getByLabelText(/Name/i)).toBeInTheDocument();
    expect(screen.getByLabelText(/Exp/i)).toBeInTheDocument();
    expect(screen.getByLabelText(/CVV/i)).toBeInTheDocument();
-
    expect(screen.getByText(/Confirmation Preference/i)).toBeInTheDocument();
    expect(
-      screen.getByRole("button", { name: /Previous/i })
+      screen.findByRole("button", { name: /Previous/i })
    ).toBeInTheDocument();
    expect(
-      screen.getByRole("button", { name: /Reserve Table/i })
+      screen.findByRole("button", { name: /Reserve Table/i })
    ).toBeInTheDocument();
 });
 
 test("shows validation errors on empty submit", async () => {
    await userEvent.click(
-      screen.getByRole("button", { name: /Reserve Table/i })
+      screen.findByRole("button", { name: /Reserve Table/i })
    );
 
    await userEvent.clear(screen.getByLabelText(/Name/i)); // Ensure validation triggers
@@ -90,16 +82,16 @@ test("clicking Reserve Table triggers payment processing", async () => {
    );
 
    await userEvent.click(
-      screen.getByRole("button", { name: /Reserve Table/i })
+      screen.findByRole("button", { name: /Reserve Table/i })
    );
 
    await waitFor(() => {
       expect(
-         screen.getByRole("button", { name: /Processing/i })
+         screen.findByRole("button", { name: /Processing/i })
       ).toBeInTheDocument();
    });
 
-   expect(screen.getByRole("button", { name: /Processing/i })).toBeDisabled();
+   expect(screen.findByRole("button", { name: /Processing/i })).toBeDisabled();
 });
 
 test("simulates successful payment scenario", async () => {

@@ -1,5 +1,4 @@
 import styles from "./ReservationReviewForm.module.css";
-import BracioleImage from "../assets/images/menuItems/braciole.webp";
 import PropTypes from "prop-types";
 import { format } from "date-fns";
 
@@ -45,7 +44,10 @@ function ReservationReviewForm({ formData, prevStep, nextStep }) {
             <h2>Reservation Details Review</h2>
             <div className={styles.body}>
                <div className={styles.imageColumn}>
-                  <img src={BracioleImage} alt="Delicious Braciole dinner" />
+                  <img
+                     src="/assets/images/menuItems/braciole.webp"
+                     alt="Delicious Braciole dinner"
+                  />
                </div>
                <div className={styles.textColumn}>
                   <ul>
