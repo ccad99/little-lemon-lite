@@ -92,12 +92,12 @@ function Header() {
                   </Link>
                </li>
                <li>
-                  <Link to="" onClick={() => setMenuOpen(false)}>
+                  <Link to="/" onClick={() => setMenuOpen(false)}>
                      Order Online
                   </Link>
                </li>
                <li>
-                  <Link to="" onClick={() => setMenuOpen(false)}>
+                  <Link to="/" onClick={() => setMenuOpen(false)}>
                      Log In
                   </Link>
                </li>

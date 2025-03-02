@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AppLayout from "./ui/AppLayout";
 import HomePage from "./pages/HomePage";
-import MenuPage from "./pages/MenuPage";
 import ReservationPage from "./pages/ReservationPage";
 import PageNotFound from "./ui/PageNotFound";
 import ReservationConfirmedPage from "./pages/ReservationConfirmedPage";
@@ -43,7 +42,6 @@ function App() {
                <Routes>
                   <Route element={<AppLayout />}>
                      <Route index element={<HomePage />} />
-                     <Route path="/menu" element={<MenuPage />} />
                      <Route
                         path="/reservations"
                         element={<ReservationPage />}
