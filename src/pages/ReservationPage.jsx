@@ -5,7 +5,6 @@ import ReservationForm from "../components/ReservationForm";
 import ReservationReviewForm from "../components/ReservationReviewForm";
 import ReservationPaymentForm from "../components/ReservationPaymentForm";
 import ReservationProgressBar from "../components/ReservationProgressBar";
-import { Link } from "react-router-dom";
 
 function ReservationPage() {
    const [step, setStep] = useState(1);

@@ -2,9 +2,9 @@
    display: flex;
    justify-content: space-between;
    align-items: center;
-   max-width: 1200px;
-   width: 80%;
-   margin: 2rem auto;
+   max-width: 900px;
+   width: 90vw;
+   margin: 1em auto;
    position: relative;
 }
 
@@ -18,28 +18,28 @@
 }
 
 .stepNumber {
-   width: 50px;
-   height: 50px;
+   width: 1.5em;
+   height: 1.5em;
    border-radius: 50%;
    background-color: var(--Color-Highlight-Light);
    color: var(--Color-Highlight);
    display: flex;
    align-items: center;
    justify-content: center;
-   font-size: 1.5rem;
+   font-size: 1rem;
    font-weight: bold;
    transition: transform 0.3s ease-in-out;
-   margin: 0.4rem;
+   margin: 0.4em;
 }
 
 .activeStep {
    background-color: var(--Color-Primary);
    color: white;
-   border-radius: 10%;
+   border-radius: 20%;
    transform: scale(1.2);
    /* animation: pulse 0.5s infinite alternate; */
    animation: pulse 0.5s ease-in-out 3;
-   padding: 1rem;
+   padding: 0.75em;
 }
 
 /*

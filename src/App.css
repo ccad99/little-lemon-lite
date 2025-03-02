@@ -19,6 +19,7 @@ html {
    --Color-Highlight: #333;
    --Color-Highlight-Light: #edefee;
    --Color-Card-Background: #e5e8e3;
+   --Color-Error: red;
 
    --Hero-Back: linear-gradient(0deg, #fff 13%, #495e57 0);
 }

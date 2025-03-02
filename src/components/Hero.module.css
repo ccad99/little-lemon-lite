@@ -3,7 +3,7 @@
    display: flex;
    justify-content: space-between;
    align-items: center;
-   padding: 2rem 18rem;
+   padding: 2em 18em;
    background: var(--Hero-Back);
    flex-wrap: wrap; /* Allows wrapping when needed */
 }
@@ -24,7 +24,7 @@
 }
 
 .heroText h1 {
-   font-size: 70px;
+   font-size: 5rem;
    font-weight: 500;
    color: var(--Color-Primary-Light);
 }
@@ -33,7 +33,7 @@
 }
 
 .heroText p {
-   font-size: 1.5rem;
+   font-size: 1.25rem;
    max-width: 80%;
 }
 
@@ -47,12 +47,12 @@
 
 /* HERO BUTTON */
 .heroButton {
-   font-size: 18px;
+   font-size: 1.2rem;
    font-weight: 700;
-   padding: 12px 24px;
-   width: 200px;
-   height: 55px;
-   margin-top: 2rem;
+   padding: 0.75em 1.5em;
+   width: 14rem;
+   height: 4rem;
+   margin-top: 1rem;
    transition: 0.3s ease-in-out;
 }
 
@@ -65,7 +65,7 @@
    width: 28%;
    display: flex;
    border-radius: 20px;
-   max-height: 550px;
+   max-height: 30rem;
    overflow: hidden;
 }
 

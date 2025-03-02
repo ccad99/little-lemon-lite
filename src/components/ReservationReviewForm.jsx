@@ -1,22 +1,43 @@
 import styles from "./ReservationReviewForm.module.css";
 import BracioleImage from "../assets/images/menuItems/braciole.webp";
+import PropTypes from "prop-types";
 import { format } from "date-fns";
 
 function ReservationReviewForm({ formData, prevStep, nextStep }) {
    const { name, date, time, guests, occasion, phone, email } = formData;
 
    const formattedDate = date ? format(new Date(date), "MMMM d, yyyy") : "";
-   const formattedPhone = phone
-      ? `(${phone.slice(-10, -7)}) ${phone.slice(-7, -4)} -${phone.slice(-4)}`
-      : "";
+
+   const formattedTime = (timeString) => {
+      if (!timeString) return "";
+      // Extract hours & minutes
+      const [hour, minute] = timeString.split(":").map(Number);
+      const date = new Date();
+      // Set extracted time into a Date object
+      date.setHours(hour, minute);
+      // Convert to 12-hour format
+      return format(date, "h:mm a");
+   };
+
+   let formattedPhone = phone;
+
+   // Remove all non-numeric characters
+   const numericPhone = phone ? phone.replace(/\D/g, "") : "";
+
+   // Format if exactly 10 digits
+   if (numericPhone.length === 10) {
+      formattedPhone = `(${numericPhone.slice(0, 3)}) ${numericPhone.slice(
+         3,
+         6
+      )}-${numericPhone.slice(6)}`;
+   }
+
    const formattedName = name
       ? name.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase())
       : "";
    const formattedOccasion = occasion
       ? occasion.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase())
       : "";
-
-   const occasionString = occasion ? `Occasion: ${formattedOccasion}` : "";
 
    return (
       <section className={styles.reviewPage}>
@@ -31,9 +52,9 @@ function ReservationReviewForm({ formData, prevStep, nextStep }) {
                      <li>Reservation for: {formattedName}</li>
                      <li>No. of Guests: {guests}</li>
                      <li>
-                        Date: {formattedDate} at {time} pm
+                        Date: {formattedDate} at {formattedTime(time)}
                      </li>
-                     <li>{occasionString}</li>
+                     {occasion && <li>Occasion: {formattedOccasion}</li>}
                      <li>Phone: {formattedPhone}</li>
                      <li>Email: {email}</li>
                   </ul>
@@ -42,12 +63,12 @@ function ReservationReviewForm({ formData, prevStep, nextStep }) {
 
             <div className={styles.buttonContainer}>
                <div className={styles.prevButton}>
-                  <button type="button" onClick={prevStep}>
+                  <button type="button" name="prev" onClick={prevStep}>
                      Previous
                   </button>
                </div>
                <div className={styles.continueButton}>
-                  <button type="button" onClick={nextStep}>
+                  <button type="button" name="next" onClick={nextStep}>
                      Continue
                   </button>
                </div>
@@ -56,5 +77,11 @@ function ReservationReviewForm({ formData, prevStep, nextStep }) {
       </section>
    );
 }
+
+ReservationReviewForm.propTypes = {
+   formData: PropTypes.object.isRequired,
+   nextStep: PropTypes.func.isRequired,
+   prevStep: PropTypes.func.isRequired,
+};
 
 export default ReservationReviewForm;

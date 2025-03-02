@@ -1,31 +1,36 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 import * as Yup from "yup";
 import { format } from "date-fns";
+import { submitAPI } from "../services/apiUtils.js";
 import styles from "./ReservationPaymentForm.module.css";
-// import CvvImage from "../assets/images/littleLemon/icon-creditcard.svg";
-import toast from "react-hot-toast";
 
-function ReservationPaymentForm({ formData, prevStep, nextStep, resetForm }) {
+function ReservationPaymentForm({ formData, prevStep, resetForm }) {
    const { name, date, time, guests } = formData;
-   const [isProcessing, setIsProcessing] = useState(false);
+
+   ReservationPaymentForm.propTypes = {
+      formData: PropTypes.object.isRequired,
+      setFormData: PropTypes.func.isRequired,
+      prevStep: PropTypes.func.isRequired,
+      resetForm: PropTypes.func.isRequired,
+   };
 
    const navigate = useNavigate();
 
    const formattedDate = date ? format(new Date(date), "MMMM d, yyyy") : "";
 
-   // const formattedPhone = phone
-   //    ? `(${phone.slice(-10, -7)}) ${phone.slice(-7, -4)} -${phone.slice(-4)}`
-   //    : "";
+   const formattedTime = (timeString) => {
+      if (!timeString) return "";
+      const [hour, minute] = timeString.split(":").map(Number);
+      const date = new Date();
+      date.setHours(hour, minute);
+      return format(date, "h:mm a");
+   };
+
    const formattedName = name
       ? name.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase())
       : "";
-   // const formattedOccasion = occasion
-   //    ? occasion.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase())
-   //    : "";
-
-   // const occasionString = occasion ? `Occasion: ${formattedOccasion}` : "";
 
    const validationSchema = Yup.object({
       ccNumber: Yup.string()
@@ -33,7 +38,25 @@ function ReservationPaymentForm({ formData, prevStep, nextStep, resetForm }) {
          .required("Credit Card Number is required"),
       ccDate: Yup.string()
          .matches(/^(0[1-9]|1[0-2])\/\d{4}$/, "Expiration Date must be MM/YYYY")
-         .required("Expiration Date is required"),
+         .required("Expiration Date is required")
+         .test(
+            "is-future-date",
+            "Expiration date must be today or in the future",
+            (value) => {
+               // Ensure a value is present
+               if (!value) return false;
+
+               const [month, year] = value.split("/").map(Number);
+               const currentDate = new Date();
+               const currentMonth = currentDate.getMonth() + 1;
+               const currentYear = currentDate.getFullYear();
+
+               return (
+                  year > currentYear ||
+                  (year === currentYear && month >= currentMonth)
+               );
+            }
+         ),
       ccName: Yup.string().required("Cardholder Name is required"),
       ccCVV: Yup.string()
          .matches(/^\d{3,4}$/, "CVV must be 3 or 4 digits")
@@ -43,34 +66,56 @@ function ReservationPaymentForm({ formData, prevStep, nextStep, resetForm }) {
       ),
    });
 
-   const processPayment = (values) => {
-      setIsProcessing(true);
+   // const processPayment = async (_, { setSubmitting }) => {
+   //    return new Promise((resolve) => {
+   //       setTimeout(() => {
+   //          const isSuccess = Math.random() < 0.5;
 
-      setTimeout(() => {
-         setIsProcessing(false);
+   //          if (isSuccess) {
+   //             toast.success(
+   //                "🎉 Reservation Confirmed! Redirecting to home..."
+   //             );
+   //             setTimeout(() => {
+   //                resetForm();
+   //                navigate("/");
+   //                resolve();
+   //             }, 3000);
+   //          } else {
+   //             const failureReason =
+   //                Math.random() < 0.5
+   //                   ? "We're sorry, we don't have a table available for the selected date and time."
+   //                   : "Payment failed. Please check your credit card details and try again.";
+   //             toast.error(failureReason);
+   //             setTimeout(() => {
+   //                prevStep();
+   //                resolve();
+   //             }, 3000);
+   //          }
 
-         const isSuccess = Math.random() < 0.9;
+   //          setSubmitting(false);
+   //       }, 2000);
+   //    });
+   // };
 
-         if (isSuccess) {
-            toast.success("🎉 Reservation Confirmed! Redirecting to home...");
-            setTimeout(() => {
-               resetForm();
-               navigate("/");
-            }, 7000);
+   const processPayment = async (values, setSubmitting) => {
+      try {
+         const success = await submitAPI(formData);
+
+         if (success) {
+            resetForm();
+            navigate("/reservation-confirmed", {
+               state: { ...formData, confirmation: values.confirmation },
+            });
          } else {
-            const failureReason =
-               Math.random() < 0.5
-                  ? "We're sorry, we don't have a table available for the selected date and time."
-                  : "Payment failed. Please check your credit card details and try again.";
-            // toast.error(failureReason, {
-            //    duration: 5000,
-            // });
-            toast.error(failureReason);
-            setTimeout(() => {
-               prevStep();
-            }, 7000);
+            console.error("❌ Reservation failed.");
+            alert("Reservation could not be completed. Please try again.");
          }
-      }, 2000);
+      } catch (error) {
+         console.error("❌ Error submitting reservation.");
+         alert("An Error occurred. Please try again.");
+      } finally {
+         setSubmitting(false);
+      }
    };
 
    return (
@@ -95,26 +140,19 @@ function ReservationPaymentForm({ formData, prevStep, nextStep, resetForm }) {
                      and check in. We look forward to serving you!
                   </div>
                   <p className={styles.reservation}>
-                     📅 {formattedDate} | 🕒 {time} PM | 👥 {guests} guests
+                     📅 {formattedDate} | 🕒 {formattedTime(time)} PM | 👥{" "}
+                     {guests} guests
                   </p>
 
                   <h3 className={styles.sectionHeader}>Credit Card Details</h3>
                   <div className={styles.paymentGrid}>
                      <div className={styles.formField}>
-                        <label>Number</label>
+                        <label htmlFor="ccNumber">Number</label>
                         <Field
                            type="text"
+                           id="ccNumber"
                            name="ccNumber"
                            placeholder="1234 5678 9012 3456"
-                           // onBlur={(e) => {
-                           //    const value = e.target.value.replace(/\D/g, ""); // Remove non-numeric chars
-                           //    if (value.length === 16) {
-                           //       e.target.value = value.replace(
-                           //          /(\d{4})(?=\d)/g,
-                           //          "$1-"
-                           //       );
-                           //    }
-                           // }}
                         />
                         <ErrorMessage
                            name="ccNumber"
@@ -123,9 +161,10 @@ function ReservationPaymentForm({ formData, prevStep, nextStep, resetForm }) {
                         />
                      </div>
                      <div className={styles.formField}>
-                        <label>Name</label>
+                        <label htmlFor="ccName">Name</label>
                         <Field
                            type="text"
+                           id="ccName"
                            name="ccName"
                            placeholder="John Doe"
                         />
@@ -136,33 +175,13 @@ function ReservationPaymentForm({ formData, prevStep, nextStep, resetForm }) {
                         />
                      </div>
                      <div className={styles.formField}>
-                        <label>Exp</label>
-
+                        <label htmlFor="ccDate">Exp</label>
                         <Field
                            type="text"
+                           id="ccDate"
                            name="ccDate"
                            placeholder="MM/YYYY"
-                           // onChange={(e) => {
-                           //    let value = e.target.value.replace(/\D/g, ""); // Remove non-numeric chars
-                           //    if (value.length > 2) {
-                           //       value = `${value.slice(0, 2)}/${value.slice(
-                           //          2,
-                           //          6
-                           //       )}`;
-                           //    }
-                           //    e.target.value = value; // Update input value
-                           // }}
-                           // onBlur={(e) => {
-                           //    let value = e.target.value.replace(/\D/g, ""); // Remove non-numeric chars
-                           //    if (value.length === 6) {
-                           //       e.target.value = value.replace(
-                           //          /^(\d{2})(\d{4})$/,
-                           //          "$1/$2"
-                           //       );
-                           //    }
-                           // }}
                         />
-
                         <ErrorMessage
                            name="ccDate"
                            component="div"
@@ -171,9 +190,14 @@ function ReservationPaymentForm({ formData, prevStep, nextStep, resetForm }) {
                      </div>
 
                      <div className={styles.formField}>
-                        <label>CVV</label>
+                        <label htmlFor="ccCVV">CVV</label>
                         <div className={styles.cvvContainer}>
-                           <Field type="text" name="ccCVV" placeholder="123" />
+                           <Field
+                              type="text"
+                              id="ccCVV"
+                              name="ccCVV"
+                              placeholder="123"
+                           />
                            <img
                               src="/assets/images/littleLemon/icon-creditcard.svg"
                               alt="CVV location"
@@ -186,6 +210,19 @@ function ReservationPaymentForm({ formData, prevStep, nextStep, resetForm }) {
                            className={styles.error}
                         />
                      </div>
+
+                     <div className={styles.formField}>
+                        <label htmlFor="ccAmt">Amount</label>
+                        <input
+                           type="text"
+                           id="ccAmt"
+                           value="$20.00"
+                           readOnly
+                           className={styles.reservationFee}
+                           aria-label="Reservation Fee"
+                           tabIndex={-1}
+                        />
+                     </div>
                   </div>
 
                   <h3 className={styles.sectionHeader}>
@@ -196,6 +233,7 @@ function ReservationPaymentForm({ formData, prevStep, nextStep, resetForm }) {
                         <label>
                            <Field
                               type="radio"
+                              id="ccConfirmText"
                               name="confirmation"
                               value="text"
                            />
@@ -204,6 +242,7 @@ function ReservationPaymentForm({ formData, prevStep, nextStep, resetForm }) {
                         <label>
                            <Field
                               type="radio"
+                              id="ccConfirmEmail"
                               name="confirmation"
                               value="email"
                            />
@@ -228,9 +267,9 @@ function ReservationPaymentForm({ formData, prevStep, nextStep, resetForm }) {
                      <button
                         type="submit"
                         className={styles.continueButton}
-                        disabled={isProcessing}
+                        disabled={isSubmitting}
                      >
-                        {isProcessing ? "Processing..." : "Reserve Table"}
+                        {isSubmitting ? "Processing..." : "Reserve Table"}
                      </button>
                   </div>
                </div>

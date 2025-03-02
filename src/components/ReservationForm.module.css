@@ -1,11 +1,10 @@
 .reservationForm {
    background-color: #f0f0f0;
-   padding: 2rem;
    border-radius: 10px;
-   width: 50%;
-   max-width: 1440px;
-   margin: 2rem auto;
-   margin-bottom: 50px;
+   width: 90vw;
+   max-width: 900px;
+   margin: 2em auto;
+   margin-bottom: 3em;
 }
 
 .reservationForm > div {
@@ -15,11 +14,11 @@
 .reservationForm {
    display: grid;
    grid-template-columns: repeat(11, 1fr);
-   gap: 1em;
-   grid-auto-rows: minmax(80px, auto);
-   padding: 1.5em;
+   gap: 0.25em;
+   grid-auto-rows: minmax(2em, auto);
+   padding: 1.5em 1em;
    background-color: lightgrey;
-   font-size: large;
+   font-size: clamp(1rem, 1.5vw, 1.2rem);
 }
 
 .error {
@@ -32,8 +31,8 @@ label,
 select {
    display: block;
    width: 100%;
-   padding: 12px;
-   font-size: 1.2rem;
+   padding: 0.5em;
+   font-size: 1rem;
    border-radius: 5px;
 }
 
@@ -81,23 +80,23 @@ select {
    display: flex;
    justify-content: flex-end;
    align-items: flex-end;
-   margin-top: 20px;
+   margin-top: 1.25em;
    gap: 1em;
    grid-row: 6;
    grid-column: 8 / 12;
 }
 
 .buttonContainer button {
-   padding: 10px 15px;
+   padding: 0.75em 1em;
    font-size: 1rem;
    border-radius: 5px;
    cursor: pointer;
    font-weight: bold;
-   min-width: 140px;
+   min-width: 9em;
 }
 
 button {
-   padding: 10px 20px;
+   padding: 0.75em 1.25em;
    font-size: 1rem;
    border-radius: 5px;
    cursor: pointer;
@@ -113,7 +112,7 @@ button {
 
 .continueButton button {
    grid-column: 10 / 12;
-   margin: 0 2rem 0 2rem;
+   margin: 0 2em 0 2em;
    display: flex;
    justify-content: flex-end;
 }
@@ -150,7 +149,7 @@ button[type="button"] {
    .continueButton {
       display: flex;
       justify-content: center;
-      margin: 10px 0;
+      margin: 0.75em 0;
    }
 }
 
@@ -166,7 +165,7 @@ button[type="button"] {
    input,
    select {
       font-size: 1.1rem;
-      padding: 12px;
+      padding: 0.75em;
    }
 
    button {
