@@ -19,7 +19,10 @@ function MenuPage() {
    });
 
    if (isLoading) return <Spinner />;
-   if (error) return <p className={styles.error}>❌ {error.message}</p>; // Display error to user
+   if (error) {
+      console.error("Error fetching menu items:", error);
+      return <p className={styles.error}>❌ Failed to load menu items</p>;
+   }
 
    return (
       <div className={styles.menuContainer}>

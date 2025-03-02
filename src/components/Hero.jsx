@@ -1,5 +1,4 @@
 import styles from "./Hero.module.css";
-import heroImage from "../assets/images/littleLemon/bruschetta-platter.jpg";
 import { Link } from "react-router-dom";
 
 function Hero() {
@@ -12,7 +11,7 @@ function Hero() {
                   <h2>Chicago</h2>
                </div>
                <p>
-                  We are a family owned Italian restaurant, focused on
+                  We are a family owned Mediterranean restaurant, focused on
                   traditional recipes served with a modern twist.
                </p>
                <Link to="/reservations">
@@ -20,7 +19,7 @@ function Hero() {
                </Link>
             </div>
             <img
-               src={heroImage}
+               src="/assets/images/littleLemon/bruschetta-platter.jpg"
                alt="Waiter holding platter of Bruschetta"
                className={styles.heroImage}
             />

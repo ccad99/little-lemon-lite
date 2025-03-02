@@ -7,6 +7,9 @@ export const getMenuItems = async () => {
       console.error("Supabase error:", error.message);
       throw new Error(error.message || "Menu Items could not be loaded");
    }
+   if (!data || data.length === 0) {
+      throw new Error("No menu items found");
+   }
    return data;
 };
 
@@ -21,6 +24,9 @@ export const getMenuItemById = async (id) => {
       console.error("Error fetching menu item:", error.message);
       throw new Error(`Failed to fetch menu item (ID: ${id})`);
    }
+   if (!data) {
+      throw new Error(`Menu item with ID ${id} not found`);
+   }
    return data;
 };
 
@@ -33,6 +39,9 @@ export const updateMenuItem = async (id, updates) => {
    if (error) {
       console.error(`Error updating menu item (ID: ${id}):`, error.message);
       throw new Error(`Failed to update menu item (ID: ${id})`);
+   }
+   if (!data || data.length === 0) {
+      throw new Error(`No menu item found with ID: ${id}`);
    }
    return data;
 };

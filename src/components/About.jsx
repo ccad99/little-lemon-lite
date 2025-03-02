@@ -1,8 +1,4 @@
 import styles from "./About.module.css";
-// import OwnerA from "../assets/images/littleLemon/mario-adrian-a.jpg";
-// import OwnerB from "../assets/images/littleLemon/mario-adrian-b.jpg";
-import Patio from "../assets/images/littleLemon/restaurant-patio.jpg";
-import Chef from "../assets/images/littleLemon/restaurant-chef.jpg";
 
 function About() {
    return (
@@ -23,12 +19,12 @@ function About() {
          <div className={styles.imageColumn}>
             <div className={styles.imageContainer}>
                <img
-                  src={Patio}
+                  src="/assets/images/littleLemon/restaurant-patio.jpg"
                   alt="Patio seating in the Little Lemon restaurant"
                   className={styles.imageA}
                />
                <img
-                  src={Chef}
+                  src="/assets/images/littleLemon/restaurant-chef.jpg"
                   alt="A Chef preparing a delicious and decorative salad"
                   className={styles.imageB}
                />

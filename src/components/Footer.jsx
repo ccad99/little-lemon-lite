@@ -1,14 +1,15 @@
-import styles from "./Footer.module.css";
-import Logo from "../assets/images/littleLemon/box-logo-yellow.png";
-
 import { Link } from "react-router-dom";
 import { FaTwitter, FaFacebook, FaInstagram } from "react-icons/fa";
+import styles from "./Footer.module.css";
 
 function Footer() {
    return (
       <footer className={styles.footer} aria-label="Website footer">
          <div className={styles.footerLogo}>
-            <img src={Logo} alt="Little Lemon Logo" />
+            <img
+               src="/assets/images/littleLemon/box-logo-yellow.png"
+               alt="Little Lemon Logo"
+            />
          </div>
          <div className={styles.footerColumns}>
             <div className={styles.footerColumn}>
@@ -20,13 +21,12 @@ function Footer() {
                      </Link>
                   </li>
                   <li className={styles.navLink}>
-                     {/* <Link to="/about" aria-label="Go to About Us Page"> */}
                      <Link to="/#about" aria-label="Go to About Us Page">
                         About Us
                      </Link>
                   </li>
                   <li className={styles.navLink}>
-                     <Link to="/" aria-label="Go to Menu Page">
+                     <Link to="/menu" aria-label="Go to Menu Page">
                         Menu
                      </Link>
                   </li>

@@ -159,15 +159,24 @@ test("submits the form and calls nextStep()", async () => {
    await userEvent.click(screen.getByRole("button", { name: /Continue/i }));
 
    expect(mockSetFormData).toHaveBeenCalled();
-   expect(mockSetFormData.mock.calls[0][0]).toEqual(
-      expect.objectContaining({
-         name: "John Doe",
-         phone: "1234567890",
-         email: "john@example.com",
-         date: "2025-03-15",
-         guests: expect.any(String),
-      })
-   );
+
+   // Simulate how setFormData updates the state
+   const updateFunction = mockSetFormData.mock.calls[0][0];
+   const result = updateFunction({
+      name: "", // Simulating initial state
+      phone: "",
+      email: "",
+      date: "",
+      guests: "1",
+   });
+
+   expect(result).toEqual({
+      name: "John Doe",
+      phone: "1234567890",
+      email: "john@example.com",
+      date: "2025-03-15",
+      guests: "3",
+   });
 
    expect(mockNextStep).toHaveBeenCalledTimes(1);
 });
