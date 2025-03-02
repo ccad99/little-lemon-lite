@@ -66,37 +66,6 @@ function ReservationPaymentForm({ formData, prevStep, resetForm }) {
       ),
    });
 
-   // const processPayment = async (_, { setSubmitting }) => {
-   //    return new Promise((resolve) => {
-   //       setTimeout(() => {
-   //          const isSuccess = Math.random() < 0.5;
-
-   //          if (isSuccess) {
-   //             toast.success(
-   //                "🎉 Reservation Confirmed! Redirecting to home..."
-   //             );
-   //             setTimeout(() => {
-   //                resetForm();
-   //                navigate("/");
-   //                resolve();
-   //             }, 3000);
-   //          } else {
-   //             const failureReason =
-   //                Math.random() < 0.5
-   //                   ? "We're sorry, we don't have a table available for the selected date and time."
-   //                   : "Payment failed. Please check your credit card details and try again.";
-   //             toast.error(failureReason);
-   //             setTimeout(() => {
-   //                prevStep();
-   //                resolve();
-   //             }, 3000);
-   //          }
-
-   //          setSubmitting(false);
-   //       }, 2000);
-   //    });
-   // };
-
    const processPayment = async (values, setSubmitting) => {
       try {
          const success = await submitAPI(formData);

@@ -76,7 +76,7 @@ function Header() {
                   </Link>
                </li>
                <li>
-                  <Link to="/menu" onClick={() => setMenuOpen(false)}>
+                  <Link to="/" onClick={() => setMenuOpen(false)}>
                      Menu
                   </Link>
                </li>
@@ -115,7 +115,7 @@ function Header() {
                   <Link to="/#about">About</Link>
                </li>
                <li>
-                  <Link to="/menu">Menu</Link>
+                  <Link to="/">Menu</Link>
                </li>
                <li>
                   <Link to="/reservations">Reservations</Link>

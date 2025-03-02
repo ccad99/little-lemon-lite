@@ -26,7 +26,7 @@ function Footer() {
                      </Link>
                   </li>
                   <li className={styles.navLink}>
-                     <Link to="/menu" aria-label="Go to Menu Page">
+                     <Link to="/" aria-label="Go to Menu Page">
                         Menu
                      </Link>
                   </li>

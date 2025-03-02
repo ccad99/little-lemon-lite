@@ -2,7 +2,6 @@ import { useRef } from "react";
 import styles from "./Carousel.module.css";
 import { specialsData } from "../data/specialsData";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import Cyclist from "/assets/images/littleLemon/cyclistLogo.jpg";
 
 function Carousel() {
    const carouselRef = useRef(null);
@@ -48,7 +47,7 @@ function Carousel() {
                            Order a delivery
                         </span>
                         <img
-                           src={Cyclist}
+                           src="/assets/images/littleLemon/cyclistLogo.jpg"
                            alt="Delivery icon"
                            className={styles.bikeIcon}
                         />
